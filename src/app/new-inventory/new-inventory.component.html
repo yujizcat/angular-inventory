@@ -1,0 +1,15 @@
+<button (click)="goBack()">back</button>
+
+
+<h1>Create a new Inventory</h1>
+
+<div class="new-form">
+    <form (ngSubmit)="onSubmit()" #invForm = "ngForm">
+        <label for="item">Item name</label>
+        <input type="text" [(ngModel)]="model.item" name="item">
+        <label for="units">Units</label>
+        <input type="number" [(ngModel)]="model.units" name="units">
+        <button type="submit">Submit</button>
+    </form>
+    
+</div>

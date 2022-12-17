@@ -1,0 +1,34 @@
+
+<h1>My inventories</h1>
+<div class="control">
+<div class="create">
+    <button routerLink="/create">Create a New Inventory</button>
+</div>
+<div class="delete">
+    <button (click)="deleteAll()">Delete All Inventories</button>
+</div>
+</div>
+<p></p>
+<div class="inventory-list">
+    <div class="invs" *ngFor="let inv of inventories">
+        <div class="inv" routerLink={{inv.id}} [class.selected]="inv === selectedInv" type="button"
+            (click)="onSelect(inv)">
+            <a>{{inv.item}} {{inv.units}}</a>
+
+        </div>
+        <div class="inv-control">
+            <button (click)="unitsControl(inv, true)">+</button>
+            <p></p>
+            <button (click)="unitsControl(inv, false)">-</button>
+        </div>
+    </div>
+</div>
+
+<p></p>
+
+
+
+
+<div *ngIf="this.isSelected===true">
+    <app-inventory-details [inv]="selectedInv"></app-inventory-details>
+</div>

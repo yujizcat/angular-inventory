@@ -1,0 +1,31 @@
+.title {
+    text-align: center;
+}
+
+.container {
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.navbar {
+    background-color: antiquewhite;
+    font-size: 30px;
+}
+
+.navbar a{
+    text-decoration: none;
+    color:black
+    
+}
+
+.navbar a:hover{
+    color: red;
+}
+
+
+.main {
+    background-color: aliceblue;
+    width: 700px;
+    text-align: center;
+}
