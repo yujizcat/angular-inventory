@@ -3,9 +3,12 @@
     <form (ngSubmit)="onSubmit()">
         <div class="form-group">
             <label for="item">New Item Name</label>
+            <br>
             <input type="text"  id="item" required [(ngModel)]="model.item" name="item" #name="ngModel">
+            <br>
             <input type="number"  id="units" required [(ngModel)]="model.units" name="units" #name="ngModel">
         </div>
+        <br>
         <button type="submit" class="btn btn-success" >Submit</button>
     </form>
 </div>

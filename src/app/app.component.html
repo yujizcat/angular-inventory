@@ -1,18 +1,34 @@
-<div class="title">
-  <h1>Inventory App</h1>
-</div>
+
+<mat-toolbar class="title">
+  <span>Inventory App</span>
+</mat-toolbar> 
+
+<mat-divider></mat-divider>
+
+<div class="interface">
+<mat-toolbar color="primary" class="navbar">
+  <mat-toolbar-row>
+    <span>Dashboard</span>
+    <button mat-icon-button routerLink="/dashboard" class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row>
+    <span>My Inventories</span>
+    <button mat-icon-button routerLink="/inventories" class="example-icon" aria-label="Example icon-button with menu icon">
+      <mat-icon>menu</mat-icon>
+    </button>
+  </mat-toolbar-row>
+
+</mat-toolbar>
 
 <div class="container">
 
 
-  <div class="navbar">
-    <a routerLink="/dashboard">Dashboard</a>
-    <p></p>
-    <a routerLink="/inventories">Inventory</a>
-    <p></p>
-  </div>
 
   <div class="main">
     <router-outlet></router-outlet>
   </div>
+</div>
 </div>

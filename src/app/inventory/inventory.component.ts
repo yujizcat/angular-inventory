@@ -19,6 +19,8 @@ export class InventoryComponent implements OnInit {
 
   isSelected = false;
 
+  click = false;
+
   ngOnInit(): void {
     this.getInventories();
   }
@@ -29,7 +31,7 @@ export class InventoryComponent implements OnInit {
     this.isSelected = true;
     this.selectedInv = inventory;
     this.router.navigate([`inventories/${this.selectedInv.id}`], { state: { params: this.selectedInv } });
-    //this.router.navigate([`/${this.selectedInv.id}`,this.selectedInv]);
+    
   }
 
   getInventories(): void {
@@ -49,11 +51,26 @@ export class InventoryComponent implements OnInit {
     this.inventoryService.updateInventory(inventory);
   }
 
+  clickItem(inventory: Inventory):void{
+    this.click=true;
+    console.log(`click ${inventory.item}`);
+  }
+
   deleteAll() {
     if (confirm(`Are you sure to delete all inventories?`)) {
       this.inventoryService.deleteAllInventory();
       alert('Deleted all inventories');
       this.router.navigate(['dashboard']);
+    }
+  }
+
+  deleteOne(inv: Inventory) {
+    if (confirm(`Are you sure to delete ${inv.item}?`)) {
+      this.inventoryService.deleteInventory(inv);
+      //this.router.navigate([`dashboard`]);
+      this.getInventories();
+      window.location.reload();
+      alert("Item deleted");
     }
   }
 
