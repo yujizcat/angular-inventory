@@ -1,14 +1,29 @@
-<h1>Update Inventory</h1>
+<mat-toolbar class="title">
+    <span>Update {{selectedInv.item}}</span>
+</mat-toolbar>
+<mat-divider></mat-divider>
+
+<p></p>
+
 <div class="update-form" *ngIf="openUpdateForm===true">
+
     <form (ngSubmit)="onSubmit()">
-        <div class="form-group">
-            <label for="item">New Item Name</label>
-            <br>
-            <input type="text"  id="item" required [(ngModel)]="model.item" name="item" #name="ngModel">
-            <br>
-            <input type="number"  id="units" required [(ngModel)]="model.units" name="units" #name="ngModel">
-        </div>
+        <mat-form-field class="form-control-full-width">
+            <mat-label for="item">New Units</mat-label>
+            <input matInput type="number"  [(ngModel)]="model.units" name="units" #name="ngModel">
+        </mat-form-field>
         <br>
-        <button type="submit" class="btn btn-success" >Submit</button>
+        <mat-form-field>
+            <mat-label for="price">New Price</mat-label>
+            <input matInput type="number" [(ngModel)]="model.price" name="price" #name="ngModel">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label for="description">New Description</mat-label>
+            <textarea matInput type="number" [(ngModel)]="model.description" name="description" #name="ngModel"></textarea>
+        </mat-form-field>
+        <br>
+        <button mat-button color="primary" type="submit">Submit</button>
     </form>
+
 </div>

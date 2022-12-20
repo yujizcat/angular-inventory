@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import {RouterModule} from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import {NgPipesModule} from 'ngx-pipes';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -71,6 +72,7 @@ import { MaterialModule } from './material/material.module';
     RouterModule,
     FormsModule,
     BrowserAnimationsModule,
+    NgPipesModule,
     MaterialModule,
     MatAutocompleteModule,
     MatCheckboxModule,

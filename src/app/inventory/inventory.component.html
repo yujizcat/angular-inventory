@@ -1,14 +1,31 @@
 <mat-toolbar class="title">
     <span>My Inventories</span>
 </mat-toolbar>
-
 <mat-divider></mat-divider>
 <p></p>
+
 <div class="control">
 
-
     <button mat-raised-button color="primary" routerLink="/create">Create New</button>
+
     <button mat-raised-button color="warn" (click)="deleteAll()">Delete All</button>
+
+</div>
+<br>
+
+<div class="sort">
+    <button mat-raised-button color="basic" (click)="sortByUnits()">Sort by Units</button>
+    <button mat-raised-button color="basic" (click)="sortByPrice()">Sort by Price</button>
+
+</div>
+<br>
+
+<div class="category">
+    <button mat-raised-button color="basic" (click)="filter('Food')">Food</button>
+    <button mat-raised-button color="basic" (click)="filter('Electronic')">Electronic</button>
+    <button mat-raised-button color="basic" (click)="filter('Book')">Book</button>
+    <button mat-raised-button color="basic" (click)="filter('Fashion')">Fashion</button>
+    <button mat-raised-button color="basic" (click)="filter('Other')">Other</button>
 </div>
 <p></p>
 
@@ -16,32 +33,42 @@
 <p></p>
 
 <mat-list class="list" *ngFor="let inv of inventories">
-    <mat-card class="list-item">
+    <mat-card class="list-item"
+        [ngStyle]="{'background-color':  (inv.sale === true) ? '#ffffcc' : ((inv.sale === false) ? '#f2f2f2' : null) }">
         <mat-card-content class="list-item-button">
-            <mat-icon type="button" (click)="unitsControl(inv, false)">exposure_neg_1</mat-icon>
+            <mat-icon type="button" (click)="unitsControl(inv, false)">arrow_downward</mat-icon>
             <p></p>
-            <mat-icon type="button" (click)="unitsControl(inv, true)">exposure_plus_1</mat-icon>
+            <mat-icon type="button" (click)="unitsControl(inv, true)">arrow_upward</mat-icon>
             <p></p>
-            
+
         </mat-card-content>
         <div class="list-item-name">
             <mat-list-item>
-                
-                <span matListItemTitle (click)="clickItem(inv)" style="font-weight:bold; font-size:20px; font-family:Courier New;">{{inv.item}}</span>
+
+                <span matListItemTitle (click)="onSelect(inv,false)"
+                    style="font-weight:bold; font-size:20px; font-family:Courier New;">{{inv.item}}</span>
                 <span matListItemLine>Units: {{inv.units}}</span>
+                <span matListItemLine>Price: {{inv.price}}</span>
+                <span matListItemLine>Category: {{inv.category}}</span>
+
+                <span matListItemLine *ngIf="inv.sale">For Sale: Yes</span>
+
+                <span matListItemLine *ngIf="inv.sale==false">For Sale: No</span>
+
             </mat-list-item>
         </div>
+
         <div class="list-item-button">
-            <mat-icon type="button" (click)="onSelect(inv)">edit</mat-icon>
+            <mat-icon type="button" (click)="onSelect(inv,true)">edit</mat-icon>
             <p></p>
             <mat-icon type="button" (click)="deleteOne(inv)">delete</mat-icon>
             <p></p>
-            
+
         </div>
 
-        
 
-        
+
+
     </mat-card>
 
 

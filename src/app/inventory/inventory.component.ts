@@ -17,26 +17,44 @@ export class InventoryComponent implements OnInit {
 
   inventories: Inventory[] = [];
 
+  tempInventories: Inventory[] = [];
+
   isSelected = false;
+  isUpdate = false;
+
+  sortU = 0;
+  sortP = 0;
 
   click = false;
 
+
   ngOnInit(): void {
     this.getInventories();
+    setTimeout(() => {
+      this.tempInventories = this.inventories;
+      console.log(this.tempInventories);
+      console.log('NgOnInit completed');
+    }, 400);
+
   }
 
   selectedInv?: Inventory;
-  onSelect(inventory: Inventory): void {
+  onSelect(inventory: Inventory, update: boolean): void {
     console.log('selected');
     this.isSelected = true;
     this.selectedInv = inventory;
-    this.router.navigate([`inventories/${this.selectedInv.id}`], { state: { params: this.selectedInv } });
-    
+    if (update) {
+      this.router.navigate([`inventories/${inventory.id}/edit`], { state: { params: inventory } });
+    } else {
+      this.router.navigate([`inventories/${this.selectedInv.id}`], { state: { params: this.selectedInv } });
+    }
+
+
   }
 
   getInventories(): void {
     this.inventoryService.fetchInventory().subscribe(inventories => this.inventories = inventories);
-    //this.inventoryService.detailedInventory().subscribe();
+
   }
 
   unitsControl(inventory: Inventory, c: boolean): void {
@@ -51,9 +69,45 @@ export class InventoryComponent implements OnInit {
     this.inventoryService.updateInventory(inventory);
   }
 
-  clickItem(inventory: Inventory):void{
-    this.click=true;
+  clickItem(inventory: Inventory): void {
+    this.click = true;
     console.log(`click ${inventory.item}`);
+  }
+
+  sortByUnits() {
+    console.log('sort by units');
+    if (this.sortU == 0) {
+      this.inventories.sort((a, b) => (a.units < b.units) ? 1 : -1);
+      this.sortU += 1;
+    } else {
+      this.inventories.sort((a, b) => (a.units > b.units) ? 1 : -1);
+      this.sortU -= 1;
+    }
+
+  }
+
+  sortByPrice() {
+    console.log('sort by price');
+    if (this.sortP == 0) {
+      this.inventories.sort((a, b) => (a.price < b.price) ? 1 : -1);
+      this.sortP += 1;
+    } else {
+      this.inventories.sort((a, b) => (a.price > b.price) ? 1 : -1);
+      this.sortP -= 1;
+    }
+  }
+
+  filter(cate: string) {
+    console.log(this.inventories);
+    console.log(this.tempInventories);
+    if (cate =='All') {
+      return this.tempInventories;
+    } else {
+    this.inventories = this.tempInventories.filter((invs) => {
+      return invs.category === cate;
+    });
+  }
+  return 0;
   }
 
   deleteAll() {

@@ -21,7 +21,7 @@ export class EditInventoryComponent {
   state = history.state;
   selectedInv = this.state.params;
 
-  model = new Inventory('',0);
+  model = new Inventory(this.selectedInv.item, this.selectedInv.units, this.selectedInv.price, this.selectedInv.category, this.selectedInv.sale, this.selectedInv.description);
 
   ngOnInit(){
 
@@ -35,4 +35,5 @@ export class EditInventoryComponent {
     this.inventoryService.updateInventory(this.model);
     this.router.navigate([`dashboard`]);
   }
+
 }

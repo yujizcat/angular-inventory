@@ -22,9 +22,13 @@ export class NewInventoryComponent {
 
   submitted = false;
 
-  model = new Inventory('', 0);
+  model = new Inventory('', 0, 0, "Food", false, '');
+
+  category = ['Food', 'Electronic', 'Book', 'Fashion', 'Other'];
+  forSale=["Yes","No"];
 
   onSubmit() {
+
     this.submitted = true;
     console.log("submit create");
     alert('Created a new inventory');
