@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-
 import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
@@ -20,7 +19,7 @@ const httpOptions = {
 })
 export class InventoryService {
 
-  constructor(private http: HttpClient,) { }
+  constructor(private http: HttpClient) { }
 
   inventoryUrl = 'api/inventory';  
   inventoryAPI = 'https://inventory-api-test-default-rtdb.firebaseio.com/inventory.json';
@@ -35,7 +34,6 @@ export class InventoryService {
 
   fetchInventory(){
     console.log("Fetching inventory");
-    //console.log(this.lastId);
     return this.http.get<{[key: string]: Inventory}>(this.inventoryAPI)
     .pipe(map(res =>{
       console.log(res);
@@ -46,7 +44,7 @@ export class InventoryService {
             inventoriesArray.push({id: key, ...res[key]});
           }
         }
-      console.log(inventoriesArray);
+      // console.log(inventoriesArray);
       return inventoriesArray;
     }))
   }
@@ -72,10 +70,7 @@ export class InventoryService {
   createInventory(inv: Inventory){
  
     return this.http.post<{name: string}>(this.inventoryAPI, inv)
-    .subscribe(res => {
-      //console.log(res.name);
-      //return this.http.patch<{id: string}>(`${this.inventoryAPI}/${res.name}`, {'id': res.name}, httpOptions).subscribe()
-    })
+    .subscribe()
   }
 
   updateInventory(inv: Inventory){

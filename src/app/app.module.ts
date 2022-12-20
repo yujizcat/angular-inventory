@@ -55,6 +55,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MaterialModule } from './material/material.module';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import { MaterialModule } from './material/material.module';
     InventoryComponent,
     InventoryDetailsComponent,
     NewInventoryComponent,
-    EditInventoryComponent
+    EditInventoryComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule,

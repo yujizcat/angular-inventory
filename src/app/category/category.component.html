@@ -1,0 +1,13 @@
+<h1>Create new category</h1>
+<form (ngSubmit)="createCategory()" #invForm="ngForm">
+    <mat-form-field>
+        <mat-label for="category">New category Name </mat-label>
+        <input matInput type="text" [(ngModel)]="newCategory.category" name="category" placeholder="Name">
+    </mat-form-field>
+    <button mat-button color="primary" type="submit">Create</button>
+</form>
+
+<mat-list class="list" *ngFor="let cate of category">
+    {{cate.category}}
+    <mat-icon (click)="deleteCategory(cate)">delete</mat-icon>
+</mat-list>
