@@ -4,6 +4,8 @@
 <mat-divider></mat-divider>
 <p></p>
 
+
+<h3>Control</h3>
 <div class="control">
 
     <button mat-raised-button color="primary" routerLink="/create">Create New</button>
@@ -11,22 +13,35 @@
     <button mat-raised-button color="warn" (click)="deleteAll()">Delete All</button>
 
 </div>
+<mat-divider></mat-divider>
 <br>
 
-<div class="sort">
-    <button mat-raised-button color="basic" (click)="sortByUnits()">Sort by Units</button>
-    <button mat-raised-button color="basic" (click)="sortByPrice()">Sort by Price</button>
-
-</div>
-<br>
-
+<h3>Category</h3>
 <div class="category">
+    <button mat-raised-button color="basic" (click)="filter('All')">All</button>
     <button mat-raised-button color="basic" (click)="filter('Food')">Food</button>
     <button mat-raised-button color="basic" (click)="filter('Electronic')">Electronic</button>
     <button mat-raised-button color="basic" (click)="filter('Book')">Book</button>
     <button mat-raised-button color="basic" (click)="filter('Fashion')">Fashion</button>
     <button mat-raised-button color="basic" (click)="filter('Other')">Other</button>
+    
 </div>
+
+<mat-divider></mat-divider>
+<br>
+
+<h3>Filter</h3>
+<div class="sort">
+    
+    <button class="sort-button" mat-raised-button color="basic" (click)="sortByUnits()">Sort by Units</button>
+    <button class="sort-button" mat-raised-button color="basic" (click)="sortByPrice()">Sort by Price</button>
+    <mat-slide-toggle (change)="showSale()">Show only for sale</mat-slide-toggle>
+
+</div>
+<mat-divider></mat-divider>
+<br>
+
+
 <p></p>
 
 
@@ -34,14 +49,8 @@
 
 <mat-list class="list" *ngFor="let inv of inventories">
     <mat-card class="list-item"
-        [ngStyle]="{'background-color':  (inv.sale === true) ? '#ffffcc' : ((inv.sale === false) ? '#f2f2f2' : null) }">
-        <mat-card-content class="list-item-button">
-            <mat-icon type="button" (click)="unitsControl(inv, false)">arrow_downward</mat-icon>
-            <p></p>
-            <mat-icon type="button" (click)="unitsControl(inv, true)">arrow_upward</mat-icon>
-            <p></p>
-
-        </mat-card-content>
+        [ngStyle]="{'background-color':  (inv.sale === true) ? '#e1f9fa' : ((inv.sale === false) ? '#f2f0f0' : null) }">
+       
         <div class="list-item-name">
             <mat-list-item>
 
@@ -51,20 +60,21 @@
                 <span matListItemLine>Price: {{inv.price}}</span>
                 <span matListItemLine>Category: {{inv.category}}</span>
 
-                <span matListItemLine *ngIf="inv.sale">For Sale: Yes</span>
-
-                <span matListItemLine *ngIf="inv.sale==false">For Sale: No</span>
-
             </mat-list-item>
         </div>
 
-        <div class="list-item-button">
+        <mat-card-content class="list-item-button">
+            
+            <mat-icon type="button" (click)="unitsControl(inv, false)">arrow_downward</mat-icon>
+            <p></p>
+            <mat-icon type="button" (click)="unitsControl(inv, true)">arrow_upward</mat-icon>
+            <p></p>
             <mat-icon type="button" (click)="onSelect(inv,true)">edit</mat-icon>
             <p></p>
             <mat-icon type="button" (click)="deleteOne(inv)">delete</mat-icon>
             <p></p>
 
-        </div>
+        </mat-card-content>
 
 
 
@@ -74,9 +84,3 @@
 
 </mat-list>
 
-
-
-
-<div *ngIf="this.isSelected===true">
-    <app-inventory-details [inv]="selectedInv"></app-inventory-details>
-</div>

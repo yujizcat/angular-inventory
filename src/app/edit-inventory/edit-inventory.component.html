@@ -19,6 +19,14 @@
         </mat-form-field>
         <br>
         <mat-form-field>
+            <mat-label>For Sale? </mat-label>
+            <mat-select name="sale" [(ngModel)]="model.sale">
+                <mat-option [value]=true>Yes</mat-option>
+                <mat-option [value]=false>No</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
             <mat-label for="description">New Description</mat-label>
             <textarea matInput type="number" [(ngModel)]="model.description" name="description" #name="ngModel"></textarea>
         </mat-form-field>

@@ -79,7 +79,7 @@ export class InventoryService {
   }
 
   updateInventory(inv: Inventory){
-    let body = {"units": inv.units, "price":inv.price, "description":inv.description}
+    let body = {"units": inv.units, "price":inv.price, "sale":inv.sale, "description":inv.description}
     return this.http.patch(`https://inventory-api-test-default-rtdb.firebaseio.com/inventory/${inv.id}.json`, body,  httpOptions)
     .subscribe(res => {
       console.log('updated');

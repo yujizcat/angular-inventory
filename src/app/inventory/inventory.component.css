@@ -6,9 +6,23 @@
 }
 
 
+.category{
+    justify-content: space-around;
+    display: flex;
+}
+
 .control{
     display: flex;
     justify-content: space-around;
+}
+
+.sort {
+    display: flex;
+    justify-content: space-around;
+}
+
+.sort-button{
+    font-size: 12px;
 }
 
 .create button{
@@ -34,15 +48,32 @@
     color: rgb(232, 235, 238);
 }
 
+.list{
+    display:inline-flex;
+    flex-wrap: wrap;
+    text-align: center;
+    flex-direction: row;
+    justify-content: center;
+    padding: 10px;
+}
+
 .list-item{
+    flex: 50%;
     display: inline-flex;
+    padding: 30px;
+}
+
+
+.list-item2{
+    display: flex;
+    justify-content: center;
     flex-direction: row;
     border: 1px solid;
-    background-color: rgb(244, 225, 217);
-    width: 400px;
-    justify-content: space-between;
+    flex-wrap: wrap;
    
 }
+
+
 
 
 .list-item-name{
@@ -54,6 +85,7 @@
     display: flex;
     margin-top: 15px;
     padding: 5px;
+    justify-content: space-between;
 }
 
 .list-item-button :hover{

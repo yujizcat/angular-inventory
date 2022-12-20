@@ -24,6 +24,7 @@ export class InventoryComponent implements OnInit {
 
   sortU = 0;
   sortP = 0;
+  showS = false;
 
   click = false;
 
@@ -32,7 +33,6 @@ export class InventoryComponent implements OnInit {
     this.getInventories();
     setTimeout(() => {
       this.tempInventories = this.inventories;
-      console.log(this.tempInventories);
       console.log('NgOnInit completed');
     }, 400);
 
@@ -100,14 +100,27 @@ export class InventoryComponent implements OnInit {
   filter(cate: string) {
     console.log(this.inventories);
     console.log(this.tempInventories);
-    if (cate =='All') {
-      return this.tempInventories;
+    if (cate == 'All') {
+      this.inventories = this.tempInventories;
     } else {
-    this.inventories = this.tempInventories.filter((invs) => {
-      return invs.category === cate;
-    });
+      this.inventories = this.tempInventories.filter((invs) => {
+        return invs.category === cate;
+      });
+    }
+    
   }
-  return 0;
+
+  showSale() {
+    if (this.showS == false) {
+      this.inventories = this.inventories.filter((inv) => {
+        return inv.sale === true;
+      })
+      this.showS = true;
+    } else {
+      this.showS = false;
+      this.inventories = this.tempInventories;
+    }
+    
   }
 
   deleteAll() {
