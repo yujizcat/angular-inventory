@@ -49,4 +49,5 @@ export class CategoryService {
       console.log('deleted');
     })
   }
+
 }

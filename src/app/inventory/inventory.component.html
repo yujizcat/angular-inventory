@@ -17,15 +17,11 @@
 <br>
 
 <h3>Category</h3>
-<div class="category">
-    <button mat-raised-button color="basic" (click)="filter('All')">All</button>
-    <button mat-raised-button color="basic" (click)="filter('Food')">Food</button>
-    <button mat-raised-button color="basic" (click)="filter('Electronic')">Electronic</button>
-    <button mat-raised-button color="basic" (click)="filter('Book')">Book</button>
-    <button mat-raised-button color="basic" (click)="filter('Fashion')">Fashion</button>
-    <button mat-raised-button color="basic" (click)="filter('Other')">Other</button>
-    
-</div>
+
+<mat-list class="list" *ngFor="let cate of categoryList">
+    <button mat-raised-button color="basic" (click)="filter(cate)">{{cate}}</button>
+</mat-list>
+
 
 <mat-divider></mat-divider>
 <br>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { Inventory } from '../inventory';
 import { InventoryService } from '../inventory.service';
+import { CategoryService } from '../category.service';
 
 @Component({
   selector: 'app-inventory',
@@ -11,6 +12,7 @@ import { InventoryService } from '../inventory.service';
 export class InventoryComponent implements OnInit {
   constructor(
     private inventoryService: InventoryService,
+    private categoryService: CategoryService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -18,6 +20,8 @@ export class InventoryComponent implements OnInit {
   inventories: Inventory[] = [];
 
   tempInventories: Inventory[] = [];
+
+  categoryList = [''];
 
   isSelected = false;
   isUpdate = false;
@@ -31,6 +35,16 @@ export class InventoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.getInventories();
+    let a = this.categoryService.fetchCategory().subscribe(res => {
+      for (let key in res) {
+        console.log(res[key].category);
+        this.categoryList.push(res[key].category);
+      }
+    })
+    setTimeout(() => {
+      this.categoryList = this.categoryList.filter(item => item);
+      console.log(this.categoryList);
+    }, 400);
     setTimeout(() => {
       this.tempInventories = this.inventories;
       console.log('NgOnInit completed');
