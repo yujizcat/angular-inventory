@@ -35,6 +35,7 @@ export class InventoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.getInventories();
+
     let a = this.categoryService.fetchCategory().subscribe(res => {
       for (let key in res) {
         console.log(res[key].category);
@@ -45,6 +46,7 @@ export class InventoryComponent implements OnInit {
       this.categoryList = this.categoryList.filter(item => item);
       console.log(this.categoryList);
     }, 400);
+    
     setTimeout(() => {
       this.tempInventories = this.inventories;
       console.log('NgOnInit completed');

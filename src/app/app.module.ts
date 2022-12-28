@@ -12,8 +12,8 @@ import { InventoryComponent } from './inventory/inventory.component';
 import { InventoryDetailsComponent } from './inventory-details/inventory-details.component';
 import { NewInventoryComponent } from './new-inventory/new-inventory.component';
 import { EditInventoryComponent } from './edit-inventory/edit-inventory.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatDatepickerModule } from '@angular/material/datepicker';
