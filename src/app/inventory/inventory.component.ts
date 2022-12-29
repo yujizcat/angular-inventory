@@ -20,6 +20,7 @@ export class InventoryComponent implements OnInit {
   inventories: Inventory[] = [];
 
   tempInventories: Inventory[] = [];
+  currentInventories: Inventory[] = [];
 
   categoryList = [''];
 
@@ -40,6 +41,7 @@ export class InventoryComponent implements OnInit {
 
   ngOnInit(): void {
     this.getInventories();
+   
 
     let a = this.categoryService.fetchCategory().subscribe(res => {
       for (let key in res) {
@@ -54,6 +56,7 @@ export class InventoryComponent implements OnInit {
 
     setTimeout(() => {
       this.tempInventories = this.inventories;
+      this.currentInventories = this.inventories;
       console.log('NgOnInit completed');
     }, 400);
 
@@ -135,6 +138,7 @@ export class InventoryComponent implements OnInit {
         return invs.category === cate;
       });
     }
+    this.currentInventories = this.inventories;
     
     setTimeout(()=>{
       this.transform();
@@ -149,15 +153,23 @@ export class InventoryComponent implements OnInit {
   }
 
   showSale() {
+    
+    console.log(this.currentInventories);
     if (this.showS == false) {
-      this.inventories = this.inventories.filter((inv) => {
+      //this.tempInventories = this.inventories;
+      this.inventories = this.currentInventories.filter((inv) => {
+        
         return inv.sale === true;
       })
       this.showS = true;
     } else {
       this.showS = false;
-      this.inventories = this.tempInventories;
+      this.inventories = this.currentInventories.filter((inv) => {
+        
+        return inv.sale === false || inv.sale === true;
+      })
     }
+    console.log(this.inventories);
     
 
   }
