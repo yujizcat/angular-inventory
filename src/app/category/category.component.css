@@ -1,0 +1,43 @@
+.title{
+    display: flex;
+    justify-content: center;
+}
+
+.category-form {
+    display: flex;
+    justify-content: center;
+
+}
+
+.category{
+    display: flex;
+    flex-flow: wrap;
+    gap: 50px 20px;
+    justify-content: center;
+    
+}
+
+.category-item{
+    width: 180px;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    background-color: rgb(253, 253, 253);
+    border-radius: 10%;
+    text-align: center;
+    border: 1px solid rgb(190, 190, 190);
+    
+}
+
+.category-name{
+    text-align: center;
+    margin-left: 5px;
+}
+
+.category-delete{
+    cursor: pointer;
+}
+
+.category-delete :hover{
+    color: red;
+}

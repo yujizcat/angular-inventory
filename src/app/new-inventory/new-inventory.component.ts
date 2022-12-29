@@ -36,8 +36,8 @@ export class NewInventoryComponent {
   ngOnInit() {
     let a = this.categoryService.fetchCategory().subscribe(res => {
       for (let key in res) {
-        console.log(res[key].category);
-        this.categoryList.push(res[key].category);
+        console.log(res[key].name);
+        this.categoryList.push(res[key].name);
       }
     })
     setTimeout(() => {

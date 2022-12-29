@@ -5,19 +5,20 @@
 <p></p>
 
 
-<div *ngIf="selectedInv">
+<div class="item" *ngIf="selectedInv">
 
     <mat-tab-group>
         <mat-tab label="Property">
 
             <br>
-            <h3 class="property-font">Category: {{selectedInv.category}}</h3>
-            <h3 class="property-font">Units: {{selectedInv.units}}</h3>
-            <h3 class="property-font">Price: €{{selectedInv.price}}</h3>
-            <h3 class="property-font">Total Value: €{{selectedInv.units * selectedInv.price}}</h3>
-            <h3 class="property-font" *ngIf="selectedInv.sale==true">For sale</h3>
-            <h3 class="property-font" *ngIf="selectedInv.sale==false">Not for sale</h3>
-
+            <div class="item-bar">
+                <h3 class="property-font">Category: {{selectedInv.category}}</h3>
+                <h3 class="property-font">Units: {{selectedInv.units}}</h3>
+                <h3 class="property-font">Price: €{{selectedInv.price}}</h3>
+                <h3 class="property-font">Total Value: €{{selectedInv.units * selectedInv.price}}</h3>
+                <h3 class="property-font" *ngIf="selectedInv.sale==true">For sale</h3>
+                <h3 class="property-font" *ngIf="selectedInv.sale==false">Not for sale</h3>
+            </div>
         </mat-tab>
         <mat-tab label="Description">
             <br>

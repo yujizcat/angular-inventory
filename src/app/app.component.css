@@ -1,24 +1,68 @@
+.main{
+    height: fit-content;
+    width: fit-content;
+    flex-grow: 1;
+
+
+}
+
 .title {
     color: rgb(23, 21, 21);
     justify-content: center;
     font-size: 35px;
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    height: 10%;
+}
+
+.hide{
+    display: flex;
+    position: absolute;
+    left: 40px;
+    font-size: 30px;
+}
+
+.user{
+    display: flex;
+    position: fixed;
+    right:20px;
+    
 }
 
 .interface{
     display: flex;
+    flex-grow: 1;
+    width: 100%;
+    position: fixed;
+    top: 20;
+    overflow-x: auto;
 }
 
 .container {
     display:flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
+    
+   
     width: 100%;
+ 
 }
 
 .navbar{
-    width: 30vh;
-    height: 100vh;
+    position: sticky;
+    top: 20;
+    left: 0;
+    min-width: 160px;
+    max-width: 160px;
     display: flex;
+    flex-direction: column;
+    font-size: 15px;
+    height: 790px;
+    z-index: 3;
+
 }
 
 .navbar :hover{
@@ -28,7 +72,23 @@
 
 
 .main {
-    background-color: aliceblue;
-    width: 700px;
-    text-align: center;
+    
+    width: 100%;
+    height: 650px;
+    overflow-y:auto;
+    
+}
+
+.bottom-main{
+    background-color: rgba(113, 97, 97, 0.095);
+    
+    flex-grow: 1;
+    width: 100%;
+    height: 300px;
+    
+    z-index: 2;
+    border: 1px solid rgb(226, 223, 223);
+    
+    
+    
 }

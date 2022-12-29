@@ -5,6 +5,16 @@
     display: inline-flex;
 }
 
+.item{
+    display: flex;
+    justify-content: center;
+}
+
+.item-bar{
+    background-color: rgb(229, 241, 241);
+    border-radius: 10%;
+}
+
 .property-font{
     font-size: 25px;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;

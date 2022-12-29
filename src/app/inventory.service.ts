@@ -29,9 +29,6 @@ export class InventoryService {
   invSubject = new Subject();
   sub$ = this.invSubject.asObservable();
 
-  getInventory(){
-    
-  }
 
   fetchInventory(){
     console.log("Fetching inventory");
@@ -91,7 +88,7 @@ export class InventoryService {
   }
 
   deleteAllInventory(){
-    return this.http.delete(`${this.inventoryRailsAPI}`,  httpOptions)
+    return this.http.delete(`${this.inventoryRailsAPI}.json`,  httpOptions)
     .subscribe(res => {
       console.log('deleted all');
     })

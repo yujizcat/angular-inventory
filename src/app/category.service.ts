@@ -21,30 +21,31 @@ export class CategoryService {
 
   categoryUrl = 'api/category';  
   categoryAPI = 'https://inventory-api-test-default-rtdb.firebaseio.com/category.json';
+  categoryRailsAPI = "https://obscure-eyrie-90705.herokuapp.com/categories"
 
   fetchCategory(){
-    return this.http.get<{[key: string]: Category}>(this.categoryAPI)
+    return this.http.get<{[key: string]: Category}>(this.categoryRailsAPI)
     .pipe(map(res =>{
       console.log(res);
-      const inventoriesArray: Category[] = []
+      const categoriesArray: Category[] = []
         for (const key in res){
           console.log(key);
           if (res.hasOwnProperty(key)){
-            inventoriesArray.push({id: key, ...res[key]});
+            categoriesArray.push({...res[key]});
           }
         }
-      // console.log(inventoriesArray);
-      return inventoriesArray;
+      console.log(categoriesArray);
+      return categoriesArray;
     }))
   }
 
   createcategory(cate: Category){
-    return this.http.post<{name: string}>(this.categoryAPI, cate)
+    return this.http.post<{name: string}>(this.categoryRailsAPI, cate)
     .subscribe()
   }
 
   deleteCategory(cate: Category){
-    return this.http.delete(`https://inventory-api-test-default-rtdb.firebaseio.com/category/${cate.id}.json`,  httpOptions)
+    return this.http.delete(`${this.categoryRailsAPI}/${cate.id}.json`,  httpOptions)
     .subscribe(res => {
       console.log('deleted');
     })

@@ -6,3 +6,9 @@
     display: inline-flex;
     
 }
+
+.update-form{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}

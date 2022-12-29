@@ -1,82 +1,73 @@
 <mat-toolbar class="title">
-    <span>My Inventories</span>
-</mat-toolbar>
-<mat-divider></mat-divider>
-<p></p>
-
-
-<h3>Control</h3>
-<div class="control">
-
+    <span>Inventories List</span>
     <button mat-raised-button color="primary" routerLink="/create">Create New</button>
-
-    <button mat-raised-button color="warn" (click)="deleteAll()">Delete All</button>
-
-</div>
-<mat-divider></mat-divider>
-<br>
-
-<h3>Category</h3>
-
-<mat-list class="list" *ngFor="let cate of categoryList">
-    <button mat-raised-button color="basic" (click)="filter(cate)">{{cate}}</button>
-</mat-list>
-
+</mat-toolbar>
 
 <mat-divider></mat-divider>
-<br>
 
-<h3>Filter</h3>
-<div class="sort">
-    
-    <button class="sort-button" mat-raised-button color="basic" (click)="sortByUnits()">Sort by Units</button>
-    <button class="sort-button" mat-raised-button color="basic" (click)="sortByPrice()">Sort by Price</button>
-    <mat-slide-toggle (change)="showSale()">Show only for sale</mat-slide-toggle>
+<div class="invs-main">
+    <div class="left-main">
+        <h3>Category</h3>
+        <button mat-raised-button color="basic" (click)="filter('All')">All</button>
+        <mat-list class="list" *ngFor="let cate of categoryList">
+            <button mat-raised-button color="basic" (click)="filter(cate)">{{cate}}</button>
+        </mat-list>
 
-</div>
-<mat-divider></mat-divider>
-<br>
+    </div>
 
 
-<p></p>
+    <div class="right-main">
+        <div class="sort">
 
+            <button class="sort-button" mat-raised-button color="basic" (click)="sortByUnits()">Sort by Units</button>
+            <button class="sort-button" mat-raised-button color="basic" (click)="sortByPrice()">Sort by Price</button>
+            <mat-slide-toggle [(ngModel)]="checked" (change)="showSale()">Show only for sale</mat-slide-toggle>
 
-<p></p>
-
-<mat-list class="list" *ngFor="let inv of inventories">
-    <mat-card class="list-item"
-        [ngStyle]="{'background-color':  (inv.sale === true) ? '#e1f9fa' : ((inv.sale === false) ? '#f2f0f0' : null) }">
-       
-        <div class="list-item-name">
-            <mat-list-item>
-
-                <span matListItemTitle (click)="onSelect(inv,false)"
-                    style="font-weight:bold; font-size:20px; font-family:Courier New;">{{inv.item}}</span>
-                <span matListItemLine>Units: {{inv.units}}</span>
-                <span matListItemLine>Price: {{inv.price}}</span>
-                <span matListItemLine>Category: {{inv.category}}</span>
-
-            </mat-list-item>
         </div>
-
-        <mat-card-content class="list-item-button">
-            
-            <mat-icon type="button" (click)="unitsControl(inv, false)">arrow_downward</mat-icon>
-            <p></p>
-            <mat-icon type="button" (click)="unitsControl(inv, true)">arrow_upward</mat-icon>
-            <p></p>
-            <mat-icon type="button" (click)="onSelect(inv,true)">edit</mat-icon>
-            <p></p>
-            <mat-icon type="button" (click)="deleteOne(inv)">delete</mat-icon>
-            <p></p>
-
-        </mat-card-content>
+        <mat-divider></mat-divider>
 
 
+        <div class="list-wrap">
+            <mat-list class="list" *ngFor="let inv of inventories">
+                <mat-card class="list-item"
+                    [ngStyle]="{'background-color':  (inv.sale === true) ? '#e1f9fa' : ((inv.sale === false) ? '#f2f0f0' : null) }">
+
+                    <div class="list-item-name">
+                        <mat-list-item>
+                            <div class="list-item-title">
+                                <span matListItemTitle (click)="onSelect(inv,false)"
+                                    style="font-weight:bold; font-size:20px; font-family:Courier New;">{{inv.item}}
+                                </span>
+                            </div>
+                            <div class="units-price">
+                                <span matListItemLine>Units: {{inv.units}}</span>
+                                <span matListItemLine>€{{inv.price}}</span>
+                            </div>
+                            <span matListItemLine>{{inv.category}}</span>
+
+                        </mat-list-item>
+                    </div>
+
+                    <mat-card-content class="list-item-button">
+
+                        <mat-icon type="button" (click)="unitsControl(inv, false)">arrow_downward</mat-icon>
+                        <p></p>
+                        <mat-icon type="button" (click)="unitsControl(inv, true)">arrow_upward</mat-icon>
+                        <p></p>
+                        <mat-icon type="button" (click)="onSelect(inv,true)">edit</mat-icon>
+                        <p></p>
+                        <mat-icon type="button" (click)="deleteOne(inv)">delete</mat-icon>
+                        <p></p>
+
+                    </mat-card-content>
 
 
-    </mat-card>
 
 
-</mat-list>
+                </mat-card>
 
+
+            </mat-list>
+        </div>
+    </div>
+</div>

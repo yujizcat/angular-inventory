@@ -31,6 +31,11 @@ export class InventoryComponent implements OnInit {
   showS = false;
 
   click = false;
+  checked = false;
+
+  trans = false;
+
+  listItemDiv = document.getElementsByClassName("list-item") as HTMLCollectionOf<HTMLElement>;
 
 
   ngOnInit(): void {
@@ -38,15 +43,15 @@ export class InventoryComponent implements OnInit {
 
     let a = this.categoryService.fetchCategory().subscribe(res => {
       for (let key in res) {
-        console.log(res[key].category);
-        this.categoryList.push(res[key].category);
+        console.log(res[key].name);
+        this.categoryList.push(res[key].name);
       }
     })
     setTimeout(() => {
       this.categoryList = this.categoryList.filter(item => item);
       console.log(this.categoryList);
     }, 400);
-    
+
     setTimeout(() => {
       this.tempInventories = this.inventories;
       console.log('NgOnInit completed');
@@ -99,7 +104,9 @@ export class InventoryComponent implements OnInit {
       this.inventories.sort((a, b) => (a.units > b.units) ? 1 : -1);
       this.sortU -= 1;
     }
-
+    setTimeout(()=>{
+      this.transform();
+    },10)
   }
 
   sortByPrice() {
@@ -111,11 +118,16 @@ export class InventoryComponent implements OnInit {
       this.inventories.sort((a, b) => (a.price > b.price) ? 1 : -1);
       this.sortP -= 1;
     }
+    
+    setTimeout(()=>{
+      this.transform();
+    },10)
   }
 
   filter(cate: string) {
-    console.log(this.inventories);
-    console.log(this.tempInventories);
+    // console.log(this.inventories);
+    // console.log(this.tempInventories);
+    
     if (cate == 'All') {
       this.inventories = this.tempInventories;
     } else {
@@ -124,6 +136,16 @@ export class InventoryComponent implements OnInit {
       });
     }
     
+    setTimeout(()=>{
+      this.transform();
+    },10)
+
+    setTimeout(() => {
+      this.checked = false;
+      this.showS = false;
+    }, 100);
+    
+
   }
 
   showSale() {
@@ -137,6 +159,7 @@ export class InventoryComponent implements OnInit {
       this.inventories = this.tempInventories;
     }
     
+
   }
 
   deleteAll() {
@@ -155,6 +178,32 @@ export class InventoryComponent implements OnInit {
       window.location.reload();
       alert("Item deleted");
     }
+  }
+
+  transform() {
+    console.log(this.listItemDiv.length);
+    if (this.listItemDiv.length != 0) {
+      console.log('transform');
+     if (this.trans === false) {
+        for (let i = 0; i<this.listItemDiv.length; i++){
+    
+          this.listItemDiv[i].style.transition = "transform 0.7s";
+          this.listItemDiv[i].style.transform = "rotate(1turn)";
+        }
+        this.trans = true;
+      } else {
+        for (let i = 0; i<this.listItemDiv.length; i++){
+          
+          this.listItemDiv[i].style.transition = "transform 0.7s";
+          this.listItemDiv[i].style.transform = "rotate(0turn)";
+        }
+        this.trans = false;
+      }
+
+     
+      
+    }
+
   }
 
 

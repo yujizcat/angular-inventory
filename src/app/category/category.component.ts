@@ -29,6 +29,7 @@ export class CategoryComponent {
   }
 
   createCategory() {
+    console.log(this.newCategory);
     this.categoryService.createcategory(this.newCategory);
     this.getCategory();
     window.location.reload();
@@ -36,10 +37,10 @@ export class CategoryComponent {
   }
 
   deleteCategory(cate: Category) {
-    this.checkInventories(cate.category);
+    this.checkInventories(cate.name);
     setTimeout(() => {
       console.log(this.cleanCategory);
-      if (confirm(`Are you sure to delete Category ${cate.category}?`)) {
+      if (confirm(`Are you sure to delete Category ${cate.name}?`)) {
         if (this.cleanCategory === true) {
           this.categoryService.deleteCategory(cate);
           this.getCategory();

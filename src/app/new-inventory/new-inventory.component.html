@@ -9,54 +9,54 @@
 
 
 
-<h1>Create a new Inventory</h1>
+
 
 <div class="new-form">
+    <h1>Create a new Inventory</h1>
     <form (ngSubmit)="onSubmit()" #invForm="ngForm">
-        <mat-form-field>
-            <mat-label for="item">Name </mat-label>
-            <input matInput type="text" [(ngModel)]="model.item" name="item" placeholder="Item name">
-        </mat-form-field>
-        <br>
-        <br>
-        <mat-form-field>
-            <mat-label for="units">Units: </mat-label>
-            <input matInput type="number" [(ngModel)]="model.units" name="units" placeholder="Units">
-        </mat-form-field>
-        <br>
-        <br>
-        <mat-form-field>
-            <mat-label for="price">Price: </mat-label>
-            <input matInput type="number" [(ngModel)]="model.price" name="price" placeholder="Price">
-        </mat-form-field>
-        <br>
-        <br>
+        <div class="form1">
+            <mat-form-field>
+                <mat-label for="item">Name </mat-label>
+                <input matInput type="text" [(ngModel)]="model.item" name="item" placeholder="Item name">
+            </mat-form-field>
+        </div>
+        <div class="form2">
+            <mat-form-field>
+                <mat-label for="units">Units: </mat-label>
+                <input matInput type="number" [(ngModel)]="model.units" name="units" placeholder="Units">
+            </mat-form-field>
 
+            <mat-form-field>
+                <mat-label for="price">Price: </mat-label>
+                <input matInput type="number" [(ngModel)]="model.price" name="price" placeholder="Price">
+            </mat-form-field>
+        </div>
 
-        <mat-form-field>
-            <mat-label for="category">Category</mat-label>
-            <mat-select name="category" [(ngModel)]="model.category">
-                <mat-option *ngFor="let c of categoryList" [value]="c">
-                    {{c}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <br>
-        <br>
-        <mat-form-field>
-            <mat-label>For Sale? </mat-label>
-            <mat-select name="sale" [(ngModel)]="model.sale">
-                <mat-option [value]=true>Yes</mat-option>
-                <mat-option [value]=false>No</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <br>
-        <br>
-        <mat-form-field>
-            <mat-label for="description">Description: </mat-label>
-            <textarea matInput [(ngModel)]="model.description" name="description"></textarea>
-        </mat-form-field>
-        <br>
+        <div class="form3">
+            <mat-form-field>
+                <mat-label for="category">Category</mat-label>
+                <mat-select name="category" [(ngModel)]="model.category">
+                    <mat-option *ngFor="let c of categoryList" [value]="c">
+                        {{c}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>For Sale? </mat-label>
+                <mat-select name="sale" [(ngModel)]="model.sale">
+                    <mat-option [value]=true>Yes</mat-option>
+                    <mat-option [value]=false>No</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="form4">
+            <mat-form-field>
+                <mat-label for="description">Description: </mat-label>
+                <textarea matInput [(ngModel)]="model.description" name="description"></textarea>
+            </mat-form-field>
+        </div>
         <br>
 
         <button mat-button color="primary" type="submit">Submit</button>

@@ -1,41 +1,54 @@
+<div class="main">
+  <mat-toolbar class="title">
+    <div class="hide">
+      <i class="fa-solid fa-bars" (click)="hideMenu()"></i>
+    </div>
+    <span>Inventory App</span>
+    <div class="user">
+      <i class="fa-regular fa-user"></i>
+    </div>
+  </mat-toolbar>
 
-<mat-toolbar class="title">
-  <span>Inventory App</span>
-</mat-toolbar> 
+  <mat-divider></mat-divider>
 
-<mat-divider></mat-divider>
+  <div class="interface">
+    <mat-toolbar color="primary" class="navbar">
+      <mat-toolbar-row>
+        <span>Dashboard</span>
+        <button mat-icon-button routerLink="/dashboard" class="example-icon">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </mat-toolbar-row>
 
-<div class="interface">
-<mat-toolbar color="primary" class="navbar">
-  <mat-toolbar-row>
-    <span>Dashboard</span>
-    <button mat-icon-button routerLink="/dashboard" class="example-icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </mat-toolbar-row>
+      <mat-toolbar-row>
+        <span>Inventories List</span>
+        <button mat-icon-button routerLink="/inventories" class="example-icon">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </mat-toolbar-row>
 
-  <mat-toolbar-row>
-    <span>My Inventories</span>
-    <button mat-icon-button routerLink="/inventories" class="example-icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </mat-toolbar-row>
+      <mat-toolbar-row>
+        <span>Category</span>
+        <button mat-icon-button routerLink="/category" class="example-icon">
+          <mat-icon>menu</mat-icon>
+        </button>
+      </mat-toolbar-row>
 
-  <mat-toolbar-row>
-    <span>Category</span>
-    <button mat-icon-button routerLink="/category" class="example-icon">
-      <mat-icon>menu</mat-icon>
-    </button>
-  </mat-toolbar-row>
+    </mat-toolbar>
 
-</mat-toolbar>
-
-<div class="container">
+    <div class="container">
 
 
 
-  <div class="main">
-    <router-outlet></router-outlet>
+      <div class="main">
+        <router-outlet></router-outlet>
+      </div>
+     
+      <div class="bottom-main">
+        
+      </div>
+      
+    </div>
+    
   </div>
-</div>
 </div>
