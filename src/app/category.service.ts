@@ -26,15 +26,15 @@ export class CategoryService {
   fetchCategory(){
     return this.http.get<{[key: string]: Category}>(this.categoryRailsAPI)
     .pipe(map(res =>{
-      console.log(res);
+     
       const categoriesArray: Category[] = []
         for (const key in res){
-          console.log(key);
+         
           if (res.hasOwnProperty(key)){
             categoriesArray.push({...res[key]});
           }
         }
-      console.log(categoriesArray);
+
       return categoriesArray;
     }))
   }

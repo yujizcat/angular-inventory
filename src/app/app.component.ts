@@ -20,7 +20,7 @@ export class AppComponent {
       navbarElement.style.transform = "translatex(-250px)";
       setTimeout(() => {
         navbarElement.style.display = "none";
-      }, 300)
+      }, 200)
       console.log('hide');
       this.hide = true;
     } else {

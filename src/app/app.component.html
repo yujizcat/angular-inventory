@@ -15,21 +15,21 @@
     <mat-toolbar color="primary" class="navbar">
       <mat-toolbar-row>
         <span>Dashboard</span>
-        <button mat-icon-button routerLink="/dashboard" class="example-icon">
+        <button mat-icon-button routerLink="/dashboard" class="example-icon" (click)="hideMenu()">
           <mat-icon>menu</mat-icon>
         </button>
       </mat-toolbar-row>
 
       <mat-toolbar-row>
         <span>Inventories List</span>
-        <button mat-icon-button routerLink="/inventories" class="example-icon">
+        <button mat-icon-button routerLink="/inventories" class="example-icon" (click)="hideMenu()">
           <mat-icon>menu</mat-icon>
         </button>
       </mat-toolbar-row>
 
       <mat-toolbar-row>
         <span>Category</span>
-        <button mat-icon-button routerLink="/category" class="example-icon">
+        <button mat-icon-button routerLink="/category" class="example-icon" (click)="hideMenu()">
           <mat-icon>menu</mat-icon>
         </button>
       </mat-toolbar-row>
