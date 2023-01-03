@@ -1,0 +1,41 @@
+.title{
+    justify-content: center;
+}
+
+.list-wrap{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.list-item{
+    display: flex;
+    flex-direction: row;
+    height: 100px;
+}
+
+.list-item-name{
+    display: flex;
+    flex-direction: row;
+}
+
+.total{
+    display: flex;
+    align-items: center;
+    margin-right: 40px;
+}
+
+.function-buttons{
+    display: flex;
+    flex-direction: column;
+}
+
+.checkout{
+    display: flex;
+    align-items: center;
+}
+
+.cancel{
+    display: flex;
+    align-items: center;
+}

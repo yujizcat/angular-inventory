@@ -1,13 +1,14 @@
 <mat-toolbar class="title">
     <span>Inventories List</span>
     <button mat-raised-button color="primary" routerLink="/create">Create New</button>
+    <button mat-raised-button color="warn" (click)="deleteAll()">Delete All</button>
 </mat-toolbar>
 
 <mat-divider></mat-divider>
 
 <div class="invs-main">
     <div class="left-main">
-        <h3>Category</h3>
+        <h3>Store</h3>
         <button mat-raised-button color="basic" (click)="filter('All')">All</button>
         <mat-list class="list" *ngFor="let cate of categoryList">
             <button mat-raised-button color="basic" (click)="filter(cate)">{{cate}}</button>
@@ -29,9 +30,14 @@
 
         <div class="list-wrap">
             <mat-list class="list" *ngFor="let inv of inventories">
+                <div *ngIf="inv.shopping == false">
+
+                </div>
                 <mat-card class="list-item"
                     [ngStyle]="{'background-color':  (inv.sale === true) ? '#e1f9fa' : ((inv.sale === false) ? '#f2f0f0' : null) }">
-
+                    <div class="list-item-id">
+                        {{inv.id}}
+                    </div>
                     <div class="list-item-name">
                         <mat-list-item>
                             <div class="list-item-title">
@@ -44,6 +50,7 @@
                                 <span matListItemLine>€{{inv.price}}</span>
                             </div>
                             <span matListItemLine>{{inv.category}}</span>
+
 
                         </mat-list-item>
                     </div>
@@ -61,13 +68,49 @@
 
                     </mat-card-content>
 
-
-
+                    <div class="add-cart">
+                        <div *ngIf="inv.sale === true && inv.units > 0">
+                            <div *ngIf="inv.shopping == false">
+                                <button mat-raised-button color="primary" (click)="addCart(inv)">Add to Cart</button>
+                            </div>
+                            <div *ngIf="inv.shopping == true">
+                                <button mat-raised-button color="disable">Already in cart</button>
+                            </div>
+                        </div>
+                        <div *ngIf="inv.sale === false || inv.units == 0">
+                            <button mat-raised-button color="disable">Not available</button>
+                        </div>
+                    </div>
 
                 </mat-card>
 
 
             </mat-list>
+        </div>
+
+        <div class="add-shopping-window" *ngIf="isShopping">
+            <div class="shopping-title-cancel">
+                <h2>Add {{this.currentShopping.item}} to shopping cart</h2>
+                <div class="cancel-shopping-button" (click)="cancelShoppingWindow()">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+                
+            </div>
+            <div class="shopping-info">
+                <h3>In Stock: {{this.currentShopping.units}}</h3>
+                <h3>Price: €{{this.currentShopping.price}}</h3>
+            </div>
+            <div class="shopping-prompt">
+                <h2>How many units do you want?</h2>
+                <mat-form-field>
+                    <mat-label for="units">Enter Quantity: </mat-label>
+                    <input matInput type="number" [(ngModel)]="this.currentShoppingUnits" name="units">
+                </mat-form-field>
+                <h3>Total price: €{{this.currentShopping.price*this.currentShoppingUnits}}</h3>
+                <form (ngSubmit)="toCart(this.currentShopping)">
+                    <button mat-button color="primary" type="submit">Submit</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>

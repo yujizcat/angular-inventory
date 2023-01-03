@@ -1,0 +1,43 @@
+<mat-toolbar class="title">
+    <span>My Shopping cart</span>
+</mat-toolbar>
+
+<div class="list-wrap">
+    <mat-list class="list" *ngFor="let inv of shoppingList">
+
+        <mat-card class="list-item">
+
+
+            <mat-list-item class="list-item-name">
+                <div class="list-item-title">
+                    <span matListItemTitle
+                        style="font-weight:bold; font-size:20px; font-family:Courier New;">{{inv.item}}
+                    </span>
+                    <div class="quantity">
+                        <span matListItemLine>Quantity: {{inv.checkout / inv.price}}</span>
+
+                    </div>
+                </div>
+
+
+            </mat-list-item>
+
+            <div class="total">
+                <h2>€{{inv.checkout}}</h2>
+            </div>
+
+            <div class="function-buttons">
+                <div class="cancel">
+                    <button mat-button color="warn" (click)="cancel(inv)">Cancel</button>
+                </div>
+
+                <div class="checkout">
+                    <button mat-button color="primary">Checkout</button>
+                </div>
+            </div>
+
+        </mat-card>
+
+
+    </mat-list>
+</div>

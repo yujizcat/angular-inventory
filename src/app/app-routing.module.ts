@@ -6,6 +6,8 @@ import { InventoryDetailsComponent } from './inventory-details/inventory-details
 import { InventoryComponent } from './inventory/inventory.component';
 import { NewInventoryComponent } from './new-inventory/new-inventory.component';
 import { CategoryComponent } from './category/category.component';
+import { RepoComponent } from './repo/repo.component';
+import { ShoppingComponent } from './shopping/shopping.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -15,6 +17,9 @@ const routes: Routes = [
   { path: 'create', component: NewInventoryComponent},
   { path: 'inventories/:id/edit', component: EditInventoryComponent},
   { path: 'category', component: CategoryComponent },
+  { path: 'repo', component: RepoComponent },
+  { path: 'shopping', component: ShoppingComponent },
+
 ];
 
 @NgModule({

@@ -7,6 +7,9 @@ export class Inventory {
         public category: string,
         public sale: boolean,
         public description: string,
+        public shopping: boolean,
+        public bought: boolean,
+        public checkout: number,
         public id?: string,
      
     ) {
@@ -17,6 +20,9 @@ export class Inventory {
         this.category = category;
         this.sale = sale;
         this.description = description;
+        this.shopping = shopping;
+        this.bought = bought;
+        this.checkout = checkout;
         this.id =id;
        
      }

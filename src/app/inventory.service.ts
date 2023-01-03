@@ -24,6 +24,7 @@ export class InventoryService {
   inventoryUrl = 'api/inventory';  
   inventoryAPI = 'https://inventory-api-test-default-rtdb.firebaseio.com/inventory.json';
   inventoryRailsAPI = 'https://obscure-eyrie-90705.herokuapp.com/inventories';
+  inventoryLocalAPI = "http://localhost:3000/inventories/";
   lastId = 0;
 
   invSubject = new Subject();
@@ -34,12 +35,12 @@ export class InventoryService {
     console.log("Fetching inventory");
     return this.http.get<{[key: string]: Inventory}>(this.inventoryRailsAPI)
     .pipe(map(res =>{
-      console.log(res);
+      // console.log(res);
       const inventoriesArray: Inventory[] = []
         for (const key in res){
-          console.log(key);
+          // console.log(key);
           if (res.hasOwnProperty(key)){
-            //inventoriesArray.push({id: key, ...res[key]});
+            // inventoriesArray.push({id: key, ...res[key]});
             inventoriesArray.push({...res[key]});
           }
         }
@@ -67,13 +68,14 @@ export class InventoryService {
   }
 
   createInventory(inv: Inventory){
- 
+    console.log(inv);
     return this.http.post<{name: string}>(this.inventoryRailsAPI, inv)
     .subscribe()
   }
 
+
   updateInventory(inv: Inventory){
-    let body = {"units": inv.units, "price":inv.price, "sale":inv.sale, "description":inv.description}
+    let body = {"units": inv.units, "price":inv.price, "sale":inv.sale, "description":inv.description, "shopping":inv.shopping, "bought":inv.bought, "checkout":inv.checkout}
     return this.http.patch(`${this.inventoryRailsAPI}/${inv.id}.json`, body,  httpOptions)
     .subscribe(res => {
       console.log('updated');

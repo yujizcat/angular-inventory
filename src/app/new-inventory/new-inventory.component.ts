@@ -27,22 +27,21 @@ export class NewInventoryComponent {
 
   submitted = false;
 
-  model = new Inventory('', 0, 0, "Food", false, '');
+  model = new Inventory('', 0, 0, "Unknown", false, '', false, false, 0);
 
-  //category = ['Food', 'Electronic', 'Book', 'Fashion', 'Other'];
   categoryList = [''];
   forSale = ["Yes", "No"];
 
   ngOnInit() {
     let a = this.categoryService.fetchCategory().subscribe(res => {
       for (let key in res) {
-        console.log(res[key].name);
+        //console.log(res[key].name);
         this.categoryList.push(res[key].name);
       }
     })
     setTimeout(() => {
       this.categoryList = this.categoryList.filter(item => item);
-      console.log(this.categoryList);
+      //console.log(this.categoryList);
     }, 400);
 
 
@@ -53,6 +52,7 @@ export class NewInventoryComponent {
     this.submitted = true;
     console.log("submit create");
     alert('Created a new inventory');
+    // console.log(this.model);
     this.inventoryService.createInventory(this.model);
 
     this.router.navigate(['dashboard']);
